@@ -1,3 +1,4 @@
 rootProject.name = 'protobuf-with-rest-poc'
 
 include 'apps:poc-server'
+include 'libs:poc-proto'
