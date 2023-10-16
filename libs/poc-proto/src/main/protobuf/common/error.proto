@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package io.inhibitor.protobufwithrest.poc.common.error;
+
+import "google/protobuf/struct.proto";
+
+option java_package = "io.inhibitor.protobufwithrest.poc.common.error";
+option java_multiple_files = true;
+
+message Error {
+  int32 status = 1;
+  string type = 2;
+  repeated google.protobuf.Struct errors = 3;
+}
