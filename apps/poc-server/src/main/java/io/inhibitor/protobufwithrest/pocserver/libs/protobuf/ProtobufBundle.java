@@ -10,5 +10,6 @@ public class ProtobufBundle<C extends Configuration> implements ConfiguredBundle
   public void run(C configuration, Environment environment) {
     environment.jersey().register(ProtobufMessageBodyReader.class);
     environment.jersey().register(ProtobufMessageBodyWriter.class);
+    environment.jersey().register(ProtobufJsonMessageBodyWriter.class);
   }
 }
