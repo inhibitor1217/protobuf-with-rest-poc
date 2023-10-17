@@ -1,4 +1,4 @@
-package io.inhibitor.protobufwithrest.pocserver.libs.protobuf;
+package io.inhibitor.protobufwithrest.lib.protobuf;
 
 import com.google.protobuf.Message;
 import jakarta.ws.rs.Produces;
@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
 
 @Provider
 @Produces("application/x-protobuf")
-class ProtobufMessageBodyWriter implements MessageBodyWriter<Message> {
+public class ProtobufMessageBodyWriter implements MessageBodyWriter<Message> {
 
   @Override
   public boolean isWriteable(

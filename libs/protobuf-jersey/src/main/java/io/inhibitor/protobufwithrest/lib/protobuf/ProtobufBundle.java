@@ -1,4 +1,4 @@
-package io.inhibitor.protobufwithrest.pocserver.libs.protobuf;
+package io.inhibitor.protobufwithrest.lib.protobuf;
 
 import io.dropwizard.core.Configuration;
 import io.dropwizard.core.ConfiguredBundle;

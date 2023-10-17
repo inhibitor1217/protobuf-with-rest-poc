@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/apps/poc-server" />
             <option value="$PROJECT_DIR$/libs" />
             <option value="$PROJECT_DIR$/libs/poc-proto" />
+            <option value="$PROJECT_DIR$/libs/protobuf-jersey" />
           </set>
         </option>
       </GradleProjectSettings>

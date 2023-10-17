@@ -1,6 +1,7 @@
-package io.inhibitor.protobufwithrest.pocserver.libs.protobuf;
+package io.inhibitor.protobufwithrest.lib.protobuf;
 
 import com.google.protobuf.Message;
+import com.google.protobuf.util.JsonFormat;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.MediaType;
@@ -9,12 +10,14 @@ import jakarta.ws.rs.ext.MessageBodyReader;
 import jakarta.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 @Provider
-@Consumes("application/x-protobuf")
-class ProtobufMessageBodyReader implements MessageBodyReader<Message> {
+@Consumes(MediaType.APPLICATION_JSON)
+public class ProtobufJsonMessageBodyReader
+    implements MessageBodyReader<Message> {
 
   @Override
   public boolean isReadable(
@@ -34,13 +37,19 @@ class ProtobufMessageBodyReader implements MessageBodyReader<Message> {
       MediaType mediaType,
       MultivaluedMap<String, String> httpHeaders,
       InputStream entityStream
-  ) throws IOException, WebApplicationException {
+  )
+      throws IOException, WebApplicationException {
     final Message.Builder builder;
     try {
       builder = (Message.Builder) type.getMethod("newBuilder").invoke(type);
     } catch (ReflectiveOperationException e) {
       throw new WebApplicationException(e);
     }
-    return builder.mergeFrom(entityStream).build();
+
+    JsonFormat.parser()
+        .ignoringUnknownFields()
+        .merge(new InputStreamReader(entityStream), builder);
+
+    return builder.build();
   }
 }

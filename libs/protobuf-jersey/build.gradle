@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group = 'io.inhibitor.protobuf-with-rest-poc'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation("io.dropwizard:dropwizard-core")
+    implementation 'com.google.protobuf:protobuf-java:3.24.4'
+    implementation 'com.google.protobuf:protobuf-java-util:3.24.4'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    // SLF4J
+    implementation 'ch.qos.logback:logback-classic:1.4.5'
+}
+
+test {
+    useJUnitPlatform()
+}

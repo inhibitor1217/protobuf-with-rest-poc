@@ -1,4 +1,4 @@
-package io.inhibitor.protobufwithrest.pocserver.libs.protobuf;
+package io.inhibitor.protobufwithrest.lib.protobuf;
 
 import com.google.protobuf.Message;
 import com.google.protobuf.util.JsonFormat;
@@ -16,7 +16,7 @@ import java.lang.reflect.Type;
 
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
-class ProtobufJsonMessageBodyWriter
+public class ProtobufJsonMessageBodyWriter
     implements MessageBodyWriter<Message> {
 
   @Override

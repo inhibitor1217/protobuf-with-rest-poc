@@ -28,6 +28,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 
+    implementation project(':libs:poc-proto')
+    implementation project(':libs:protobuf-jersey')
+
     // Dropwizard & Core
     implementation("com.google.inject:guice")
     implementation("io.dropwizard:dropwizard-core")
@@ -41,7 +44,6 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.4.5'
 
     // DTO interface
-    implementation project(':libs:poc-proto')
     implementation 'com.google.protobuf:protobuf-java:3.24.4'
     implementation 'com.google.protobuf:protobuf-java-util:3.24.4'
 }

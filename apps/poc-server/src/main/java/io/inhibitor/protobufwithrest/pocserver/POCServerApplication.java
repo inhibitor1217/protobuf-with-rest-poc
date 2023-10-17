@@ -5,7 +5,7 @@ import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
-import io.inhibitor.protobufwithrest.pocserver.libs.protobuf.ProtobufBundle;
+import io.inhibitor.protobufwithrest.lib.protobuf.ProtobufBundle;
 import io.inhibitor.protobufwithrest.pocserver.services.user.UserModule;
 import ru.vyarus.dropwizard.guice.GuiceBundle;
 
