@@ -5,6 +5,7 @@ import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
+import io.inhibitor.protobufwithrest.pocserver.services.user.UserModule;
 import ru.vyarus.dropwizard.guice.GuiceBundle;
 
 public class POCServerApplication extends Application<POCServerConfiguration> {
@@ -22,8 +23,12 @@ public class POCServerApplication extends Application<POCServerConfiguration> {
     bootstrap.addBundle(
         GuiceBundle.builder()
             .enableAutoConfig(
+                "io.inhibitor.protobufwithrest.pocserver.behaviors",
                 "io.inhibitor.protobufwithrest.pocserver.resources",
                 "io.inhibitor.protobufwithrest.pocserver.services"
+            )
+            .modules(
+                new UserModule()
             )
             .build()
     );
