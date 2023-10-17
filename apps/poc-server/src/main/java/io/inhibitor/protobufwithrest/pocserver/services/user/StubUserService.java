@@ -18,8 +18,6 @@ class StubUserService implements UserService {
 
   @Override
   public GetUserResponse getUser(GetUserRequest request) {
-    log.info("request: {}", request);
-
     final String id = request.getPayload().getId();
 
     if (id.isEmpty()) {
