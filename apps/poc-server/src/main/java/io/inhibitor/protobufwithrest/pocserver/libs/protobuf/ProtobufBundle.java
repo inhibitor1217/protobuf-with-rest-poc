@@ -8,8 +8,9 @@ public class ProtobufBundle<C extends Configuration> implements ConfiguredBundle
 
   @Override
   public void run(C configuration, Environment environment) {
+    environment.jersey().register(ProtobufJsonMessageBodyReader.class);
+    environment.jersey().register(ProtobufJsonMessageBodyWriter.class);
     environment.jersey().register(ProtobufMessageBodyReader.class);
     environment.jersey().register(ProtobufMessageBodyWriter.class);
-    environment.jersey().register(ProtobufJsonMessageBodyWriter.class);
   }
 }

@@ -10,6 +10,7 @@ import jakarta.ws.rs.ext.MessageBodyWriter;
 import jakarta.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
@@ -38,6 +39,11 @@ class ProtobufJsonMessageBodyWriter
       MultivaluedMap<String, Object> httpHeaders,
       OutputStream entityStream
   ) throws IOException, WebApplicationException {
-    entityStream.write(JsonFormat.printer().print(message).getBytes());
+    final var writer = new OutputStreamWriter(entityStream);
+    JsonFormat.printer()
+        .includingDefaultValueFields()
+        .omittingInsignificantWhitespace()
+        .appendTo(message, writer);
+    writer.flush();
   }
 }
